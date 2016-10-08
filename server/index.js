@@ -14,3 +14,6 @@ app.listen(port.main, function() {
     console.log('Synced with PostgreSQL!');
   });
 });
+app.on('connection', (socket) => {
+  socket.setTimeout(120 * 1000);
+});

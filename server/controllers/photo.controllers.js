@@ -16,7 +16,31 @@ module.exports = {
   uploadPhoto,
   photos,
   stack,
-  validPhoto
+  validPhoto,
+  train
+};
+
+function train (req, res) {
+  let counter = 1;
+  let automate = function() {
+    let config = {
+      method: 'POST',
+      uri: 'http://localhost:3002/getTrainingData'
+    }
+    request(config, (err, response, body) => {
+      if (err) {
+        console.log(err);
+      } else {
+        if (counter <= 49) {
+          counter++;
+          automate();
+        } else {
+          res.send();
+        }
+      }
+    })
+  };
+  automate();
 };
 
 function sendToCurator (data) {

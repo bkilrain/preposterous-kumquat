@@ -58,4 +58,7 @@ module.exports = (app, express) => {
     photos.stack(req, res);
   });
   
+  app.post('/kickoffTraining', (req, res) => {
+    photos.train(req, res);
+  })
 };
