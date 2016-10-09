@@ -14,8 +14,8 @@ services:
       CURATOR: curator:3002
     depends_on:
       - "db"
-    volumes:
-      - .:/usr/src/app
+    # volumes:
+    #   - .:/usr/src/app
   db:
     image: postgres
     ports:
@@ -34,8 +34,13 @@ services:
       - "3002"
     depends_on:
       - "redis"
-    environment:
-      NODE_ENV: PROD
+      - "simserver"
+    # environment:
+    #   NODE_ENV: PROD
   redis:
     image: redis
+  simserver:
+    image: simserver:0.1
+    expose: 
+    - "5000"
 

@@ -25,7 +25,7 @@ function train (req, res) {
   let automate = function() {
     let config = {
       method: 'POST',
-      uri: 'http://localhost:3002/getTrainingData'
+      uri: 'http://curator:3002/getTrainingData'
     }
     request(config, (err, response, body) => {
       if (err) {
